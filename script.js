@@ -121,6 +121,10 @@ notesList.on('click', function(e) {
     readOutLoud(content);
   }
 
+  if(target.hasClass('stop-listen')) {
+    window.speechSynthesis.cancel();
+  }
+
   // Delete note.
   if(target.hasClass('delete-note')) {
     var dateTime = target.siblings('.date').text();  
@@ -161,6 +165,7 @@ function renderNotes(notes) {
         <p class="header">
           <span class="date">${note.date}</span>
           <a href="#" title="Listen to Note"><i class="listen-note fa fa-play-circle"></i></a>
+          <a href="#" class="stop-listen">Stop</a>
           <a href="#" class="delete-note" title="Delete">Delete</a>
         </p>
         <p class="content">${note.content}</p>
